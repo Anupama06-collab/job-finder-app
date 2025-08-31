@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ApplyPage from "./pages/ApplyPage";
+import JobListPage from "./pages/JobListPage";
+
 
 function App() {
   const [jobs, setJobs] = useState([]);
@@ -19,8 +23,16 @@ function App() {
           <p>{job.company}</p>
         </div>
       ))}
+    
+    <Router>
+      <Routes>
+         <Route path="/" element={<JobListPage />} />
+        <Route path="/apply/:jobId" element={<ApplyPage />} />
+      </Routes>
+    </Router>
     </div>
   );
+  
 }
 
 export default App;
